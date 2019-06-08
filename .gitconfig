@@ -1,0 +1,27 @@
+[alias]
+	c = commit -am
+	p = push
+	s = status
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold # line info
+	old = red # deletions
+	new = green # additions
+
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = cyan
+
+[help]
+	# Automatically correct and execute mistyped commands
+	autocorrect = 1
+
+[include]
+	# use separate file for username / github token / etc
+  path = ~/.gitconfig.local
+
+[core]
+	# Globally ignore files defined in this file:
+	excludesfile = ~/.gitignore
