@@ -13,7 +13,8 @@ alias nt="npm test"
 
 alias pull="git pull"
 alias push="git push"
-alias branch="git checkout -b"
+alias gcb="git checkout -b"
+alias branch="master; pull; gcb"
 alias master="git checkout master"
 
 #
