@@ -10,6 +10,7 @@ brew install coreutils
 brew install z
 brew install git
 brew install zsh-autosuggestions
+brew install zsh-syntax-highlighting
 
 # Remove outdated versions
 brew cleanup
