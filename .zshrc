@@ -17,7 +17,7 @@ ZSH_THEME="sawyer"
 # These plugins:
 # - Make `z` command available (brew install z)
 # - Initialize version managers: pynev nvm (brew install nvm pyenv rbenv)
-plugins=(nvm pyenv rbenv z)
+plugins=(nvm pyenv rbenv ssh-agent z)
 
 # Use hyphen-insensitive completion. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
