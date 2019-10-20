@@ -39,10 +39,10 @@ ask_for_confirmation() {
 }
 
 ask_for_sudo() {
-    
+
     # Ask for the administrator password upfront
     sudo -v
-    
+
     # Update existing `sudo` time stamp until this script has finished
     # https://gist.github.com/cowboy/3118588
     while true; do
@@ -50,7 +50,7 @@ ask_for_sudo() {
         sleep 60
         kill -0 "$$" || exit
     done &> /dev/null &
-    
+
 }
 
 cmd_exists() {
@@ -69,18 +69,18 @@ get_answer() {
 }
 
 get_os() {
-    
+
     declare -r OS_NAME="$(uname -s)"
     local os=""
-    
+
     if [ "$OS_NAME" == "Darwin" ]; then
         os="osx"
         elif [ "$OS_NAME" == "Linux" ] && [ -e "/etc/lsb-release" ]; then
         os="ubuntu"
     fi
-    
+
     printf "%s" "$os"
-    
+
 }
 
 is_git_repository() {
@@ -122,7 +122,7 @@ print_result() {
     [ $1 -eq 0 ] \
     && print_success "$2" \
     || print_error "$2"
-    
+
     [ "$3" == "true" ] && [ $1 -ne 0 ] \
     && exit
 }
@@ -148,19 +148,19 @@ declare -a FILES_TO_SYMLINK=$(find . -type f -maxdepth 1 -name ".*" -not -name .
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 main() {
-    
+
     local i=""
     local sourceFile=""
     local targetFile=""
-    
+
     for i in ${FILES_TO_SYMLINK[@]}; do
-        
+
         sourceFile="$(pwd)/$i"
         targetFile="$HOME/$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
-        
+
         if [ -e "$targetFile" ]; then
             if [ "$(readlink "$targetFile")" != "$sourceFile" ]; then
-                
+
                 ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"
                 if answer_is_yes; then
                     rm -rf "$targetFile"
@@ -168,16 +168,27 @@ main() {
                 else
                     print_error "$targetFile → $sourceFile"
                 fi
-                
+
             else
                 print_success "$targetFile → $sourceFile"
             fi
         else
             execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
         fi
-        
+
     done
-    
+
+    print_info "Setting up crontab"​
+    print_success "Backing up user crontab to /tmp/crontab.bk"​
+    crontab -l > /tmp/crontab.bk​
+
+    print_success "Replacing user crontab with contents of $(pwd)/crontab"​
+    crontab - < $(pwd)/crontab​
+
+    print_info "NOTE: Because of an OS X security block, you will need to manually make a material change to your crontab before it will be installed."​
+    print_info "Your crontab will be opened next; you should make a material change (i.e. add a comment on a new line) and save it"​
+    read -p "Press any key to continue"​
+    env EDITOR=nano crontab -e
 }
 
 main
