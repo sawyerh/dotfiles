@@ -15,7 +15,9 @@ alias pull="git pull"
 alias push="git push"
 alias gcb="git checkout -b"
 alias branch="master; pull; gcb"
+alias dbranch="dev; pull; gcb"
 alias master="git checkout master"
+alias dev="git checkout dev"
 
 #
 # Modify `ls` to output more relevant info:
