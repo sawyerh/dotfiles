@@ -15,9 +15,10 @@ ZSH_THEME="sawyer"
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # These plugins:
+# - dotenv: Automatically load ENV variables from .env file when you cd into project root directory
 # - Make `z` command available (brew install z)
 # - Initialize version managers: pynev nvm (brew install nvm pyenv rbenv)
-plugins=(nvm pyenv rbenv ssh-agent z)
+plugins=(dotenv nvm pyenv rbenv ssh-agent z)
 
 # Use hyphen-insensitive completion. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
