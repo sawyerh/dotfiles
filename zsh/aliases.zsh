@@ -36,6 +36,13 @@ alias ls='gls -AFh ${colorflag} --group-directories-first'
 alias lsd='ls -l | grep "^d"' # only directories
 
 #
+# AWS CLI
+# https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-docker.html
+#
+alias aws='docker run --rm -it -v ~/.aws:/root/.aws amazon/aws-cli'
+alias aws-update='docker pull amazon/aws-cli:latest'
+
+#
 # Misc:
 #
 # What's my IP address?
