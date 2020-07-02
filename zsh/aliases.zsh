@@ -13,11 +13,11 @@ alias nt="npm test"
 
 alias pull="git pull"
 alias push="git push"
-alias gcb="git checkout -b"
-alias branch="master; pull; gcb"
-alias dbranch="dev; pull; gcb"
-alias master="git checkout master"
-alias dev="git checkout dev"
+alias checkout="git checkout"
+alias branch="master; pull; checkout -b"
+alias dbranch="dev; pull; checkout -b"
+alias master="checkout master"
+alias dev="checkout dev"
 
 #
 # Modify `ls` to output more relevant info:
@@ -34,13 +34,6 @@ eval "$(gdircolors -b ~/.dircolors)"
 # ls options: A = include hidden (but not . or ..), F = put `/` after folders, h = byte unit suffixes
 alias ls='gls -AFh ${colorflag} --group-directories-first'
 alias lsd='ls -l | grep "^d"' # only directories
-
-#
-# AWS CLI
-# https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-docker.html
-#
-alias aws='docker run -e AWS_PROFILE --rm -it -v ~/.aws:/root/.aws amazon/aws-cli'
-alias aws-update='docker pull amazon/aws-cli:latest'
 
 #
 # Misc:
