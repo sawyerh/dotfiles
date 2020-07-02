@@ -7,3 +7,7 @@ export PATH="/usr/local/sbin:$PATH"
 # Make `azcopy` command available from any directory
 # Download from: https://github.com/Azure/azure-storage-azcopy
 export PATH="~/Dev/SDK/azcopy:$PATH"
+
+# Python package manager used on PFML
+# https://python-poetry.org/docs/#installation
+export PATH="$HOME/.poetry/env:$PATH"
