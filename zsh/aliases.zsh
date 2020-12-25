@@ -9,7 +9,6 @@ alias projects='cd ~/Dev/Projects/'
 #
 alias nr="npm run"
 alias ni="npm install"
-alias nt="npm test"
 
 alias pull="git pull"
 alias push="git push"
