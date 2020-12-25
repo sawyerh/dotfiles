@@ -15,9 +15,10 @@ alias pull="git pull"
 alias push="git push"
 alias checkout="git checkout"
 alias branch="master; pull; checkout -b"
-alias dbranch="dev; pull; checkout -b"
 alias master="checkout master"
-alias dev="checkout dev"
+alias stage="checkout deploy/portal/stage"
+# Update current branch with latest changes on master
+alias update="git pull origin master"
 
 #
 # Modify `ls` to output more relevant info:
