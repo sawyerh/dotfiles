@@ -13,11 +13,11 @@ alias ni="npm install"
 alias pull="git pull"
 alias push="git push"
 alias checkout="git checkout"
-alias branch="master; pull; checkout -b"
-alias master="checkout master"
-alias stage="checkout deploy/portal/stage"
-# Update current branch with latest changes on master
-alias update="git pull origin master"
+alias branch="main; pull; checkout -b"
+alias main="checkout main"
+alias master="main"
+# Update current branch with latest changes on main branch
+alias update="git pull origin main"
 
 #
 # Modify `ls` to output more relevant info:
